@@ -105,6 +105,20 @@ class exploration:
         plt.title(title, size=20)
         plt.xticks(rotation=75, fontsize=14)
         plt.show()
+    def plot_box_multi(df: pd.DataFrame, x_col: str, y_col: str, title: str) -> None:
+        '''
+        # box_multi: Plot a box plot.
+        # df: dataframe to be plotted
+        # x_col: x-axis column
+        # y_col: y-axis column
+        # title: Title of the plot
+        '''
+        plt.figure(figsize=(12, 7))
+        sns.boxplot(data=df, x=x_col, y=y_col)
+        plt.title(title, size=20)
+        plt.xticks(rotation=75, fontsize=14)
+        plt.yticks(fontsize=14)
+        plt.show()
 
 
          
