@@ -27,3 +27,15 @@ class exploration:
                     vmax=1, fmt='.2f', linewidths=.7, cbar=cbar)
         plt.title(title, size=20, fontweight='bold')
         plt.show()
+    def plot_heatmap_from_correlation(correlation, title: str):
+        '''
+        heatmap: Plot rectangular data as a color-encoded matrix and correlation matrix.
+        title: Title of the plot
+        correlation: correlation matrix
+        '''
+        plt.figure(figsize=(14, 9))
+        sns.heatmap(correlation)
+        plt.title(title, size=18, fontweight='bold')
+        plt.show()
+
+         
