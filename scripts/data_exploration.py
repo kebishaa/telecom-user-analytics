@@ -52,5 +52,18 @@ class exploration:
         plt.xticks(fontsize=14)
         plt.yticks(fontsize=14)
         plt.show()
+    def simple_plot_scatter(df: pd.DataFrame, x_col: str, y_col: str, title: str) -> None:
+        '''
+        df: dataframe to be plotted
+        x_col: x-axis column
+        y_col: y-axis column
+        title: Title of the plot
+        '''
+        plt.figure(figsize=(12, 7))
+        sns.scatterplot(data=df, x=x_col, y=y_col)
+        plt.title(title, size=20)
+        plt.xticks(fontsize=14)
+        plt.yticks(fontsize=14)
+        plt.show()
 
          
