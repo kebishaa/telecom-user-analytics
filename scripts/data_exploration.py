@@ -65,5 +65,16 @@ class exploration:
         plt.xticks(fontsize=14)
         plt.yticks(fontsize=14)
         plt.show()
+    def plot_hist(df: pd.DataFrame, column: str, color: str) -> None:
+        '''
+        # hist: Plot a histogram.
+        # df: dataframe to be plotted
+        # column: column to be plotted
+        # color: color of the histogram
+        '''
+        sns.displot(data=df, x=column, color=color, kde=True, height=7, aspect=2)
+        plt.title(f'Distribution of {column}', size=20, fontweight='bold')
+        plt.show()
+
 
          
