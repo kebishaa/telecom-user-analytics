@@ -31,3 +31,5 @@ def show_datatypes(self) -> pd.DataFrame:
         return self.df.dtypes
 def show_data_description(self) -> pd.DataFrame:
         return self.df.describe()
+def show_data_information(self) -> pd.DataFrame:
+        return self.df.info()
