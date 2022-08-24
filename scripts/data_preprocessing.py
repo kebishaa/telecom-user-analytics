@@ -47,3 +47,12 @@ def list_coloumn_names(self) -> pd.DataFrame:
 ################################################################################################
 #  Missing Data manipulation script
 ################################################################################################
+def colums_WithMissingValue(self):
+        miss = []
+        dff = self.df.isnull().any()
+        summ = 0
+        for col in dff:
+            if col == True:
+                miss.append(dff.index[summ])
+            summ += 1
+        return miss
