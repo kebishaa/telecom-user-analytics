@@ -37,3 +37,6 @@ def show_statistical_info(self) -> pd.DataFrame:
         return self.df.agg(['mean'])
 def show_correlation(self) -> pd.DataFrame:
         return self.df.corr()
+def collective_grouped_mean(self, colomnName: str) -> pd.DataFrame:
+        groupby_colomnName = self.df.groupby(colomnName)
+        return groupby_colomnName.mean()
