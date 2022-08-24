@@ -40,3 +40,10 @@ def show_correlation(self) -> pd.DataFrame:
 def collective_grouped_mean(self, colomnName: str) -> pd.DataFrame:
         groupby_colomnName = self.df.groupby(colomnName)
         return groupby_colomnName.mean()
+def list_coloumn_names(self) -> pd.DataFrame:
+        return self.df.columns
+
+
+################################################################################################
+#  Missing Data manipulation script
+################################################################################################
