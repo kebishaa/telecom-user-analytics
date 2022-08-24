@@ -35,3 +35,5 @@ def show_data_information(self) -> pd.DataFrame:
         return self.df.info()
 def show_statistical_info(self) -> pd.DataFrame:
         return self.df.agg(['mean'])
+def show_correlation(self) -> pd.DataFrame:
+        return self.df.corr()
