@@ -27,3 +27,5 @@ def convertByteMB(self, coll) -> pd.DataFrame:
 ################################################################################################
 #  Data Information script
 ################################################################################################
+def show_datatypes(self) -> pd.DataFrame:
+        return self.df.dtypes
