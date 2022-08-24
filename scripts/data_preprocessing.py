@@ -33,3 +33,5 @@ def show_data_description(self) -> pd.DataFrame:
         return self.df.describe()
 def show_data_information(self) -> pd.DataFrame:
         return self.df.info()
+def show_statistical_info(self) -> pd.DataFrame:
+        return self.df.agg(['mean'])
