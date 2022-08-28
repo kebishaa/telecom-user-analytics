@@ -21,45 +21,14 @@ class CleanTelecomData:
         convert column to datetime
         """
 
-        df['start'] = pd.to_datetime(
-            df['start'])
-        df['end'] = pd.to_datetime(
-            df['end'])
+        df['Start'] = pd.to_datetime(
+            df['Start'])
+        df['End'] = pd.to_datetime(
+            df['End'])
 
         return df
 
-    def drop_columns_with_null_values(self, df: pd.DataFrame, threshold_in_percent=30) -> pd.DataFrame:
-        helper = helper()
-
-        null_percent_df = pd.DataFrame(columns=['column', 'null_percent'])
-        columns = df.columns.values.tolist()
-
-        null_percent_df['column'] = columns
-        null_percent_df['null_percent'] = null_percent_df['column'].map(
-            lambda x: assistant.percent_missing_for_col(df, x))
-
-        columns_to_be_dropped = null_percent_df[null_percent_df['null_percent']
-                                                > threshold_in_percent]['column'].to_list()
-        df = self.__drop_columns(df, columns_to_be_dropped)
-
-        return df
-
-    def drop_rows_with_null_values(self, df: pd.DataFrame, threshold_in_percent=1) -> pd.DataFrame:
-        assistant = Assistants()
-
-        null_percent_df = pd.DataFrame(columns=['column', 'null_percent'])
-        columns = df.columns.values.tolist()
-
-        null_percent_df['column'] = columns
-        null_percent_df['null_percent'] = null_percent_df['column'].map(
-            lambda x: assistant.percent_missing_for_col(df, x))
-        
-        columns_subset = null_percent_df[null_percent_df['null_percent']
-                                         < threshold_in_percent]['column'].to_list()
-
-        df = df.dropna(subset=columns_subset)
-
-        return df
+    
 
     def handle_missing_qantitative_data_with_mean(self, df: pd.DataFrame, method="mean"):
 
@@ -157,36 +126,8 @@ class CleanTelecomData:
         df = self.__convert_bytes_to_megabytes(df, "total_dl_(bytes)")
         df = self.__convert_bytes_to_megabytes(df, "total_ul_(bytes)")
 
-        converted_df = df.rename(columns={'social_media_dl_(bytes)': 'social_media_dl',
-                                          'social_media_ul_(bytes)': 'social_media_ul',
-
-                                          'google_dl_(bytes)': 'google_dl',
-                                          'google_ul_(bytes)': 'google_ul',
-
-                                          'email_dl_(bytes)': 'email_dl',
-                                          'email_ul_(bytes)': 'email_ul',
-
-                                          'youtube_dl_(bytes)': 'youtube_dl',
-                                          'youtube_ul_(bytes)': 'youtube_ul',
-
-                                          'netflix_dl_(bytes)': 'netflix_dl',
-                                          'netflix_ul_(bytes)': 'netflix_ul',
-
-                                          'gaming_dl_(bytes)': 'gaming_dl',
-                                          'gaming_ul_(bytes)': 'gaming_ul',
-
-                                          'other_dl_(bytes)': 'other_dl',
-                                          'other_ul_(bytes)': 'other_ul',
-
-                                          'total_dl_(bytes)': 'total_dl',
-                                          'total_ul_(bytes)': 'total_ul',
-                                          })
-        return converted_df
-
-    def __drop_columns(self, df, columns=[]):
-
-        return df.drop(columns, axis=1)
-
+        
+    
     def __convert_bytes_to_megabytes(df, bytes_data):
 
         megabyte = 1*10e+5
